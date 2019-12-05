@@ -1,0 +1,14 @@
+            string[] nombres={'Erick Leyva','Marcos Chavez','Lucia Alcantara','Miriam Perez'};
+            
+            for(int i=0;i<nombres.GetLength(0);i++){
+            
+                 
+            string[] campos= nombres[i].Split(' ');
+
+            Console.WriteLine(campos[0].ToLower().Substring(0,1) + campos[1].ToLower()+"@everis.com");
+                
+                
+                
+            }
+            
+            
