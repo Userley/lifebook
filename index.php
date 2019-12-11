@@ -1,13 +1,14 @@
 <?php
 session_start();
+include 'conex.php';
 if (!empty($_SESSION['active'])) {
 
     $usuario = utf8_encode($_SESSION['nombre']);
     $cargo   = utf8_encode($_SESSION['cargo']);
-
     $contdocumentos = count(glob('archivos/documentos/{*.*}', GLOB_BRACE));
     $contimagenes   = count(glob('archivos/imagenes/{*.*}', GLOB_BRACE));
-    $contvideos     = count(glob('archivos/videos/{*.*}', GLOB_BRACE));
+    $contvideos     = mysqli_num_rows(mysqli_query($Cn,"select * from videos"));
+    $contfrases  = mysqli_num_rows(mysqli_query($Cn,"select * from frases"));
 } else {
     header('location: login.php');
 }
@@ -245,10 +246,10 @@ if (!empty($_SESSION['active'])) {
                     <div class="icon bg-orange"><i class="icon-check"></i></div>
                     <div class="title"><span>Frases</span>
                       <div class="progress">
-                        <div role="progressbar" style="width: 100%; height: 4px;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" class="progress-bar bg-orange"></div>
+                        <div role="progressbar" style="<?php echo 'width:' . $contfrases . '%'; ?>; height: 4px;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" class="progress-bar bg-orange"></div>
                       </div>
                     </div>
-                    <div class="number"><strong>50</strong></div>
+                    <div class="number"><strong><?php echo $contfrases; ?></strong></div>
                   </div>
                 </div>
               </div>

@@ -8,7 +8,7 @@ if (!empty($_SESSION['active'])) {
         if (empty($_POST['username']) || empty($_POST['password'])) {
             $msj = "Ingrese Usuario y contraseña";
         } else {
-            $Cn    = mysqli_connect("sql201.eshost.com.ar", "eshos_23048472", "manson87", "eshos_23048472_lifeadmin") or die("Error de conexión");
+          include 'conex.php';
             $query = mysqli_query($Cn, "SELECT * from usuarios where user='" . $_POST['username'] . "' and pass='" . $_POST['password'] . "'");
             $Rs    = mysqli_num_rows($query);
             if ($Rs > 0) {

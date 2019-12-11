@@ -1,5 +1,7 @@
 <?php
 session_start();
+
+include 'conex.php';
 if (!empty($_SESSION['active'])) {
     date_default_timezone_set('America/Bogota');
 
@@ -256,7 +258,7 @@ if (!empty($_SESSION['active'])) {
 
 
                                             <?php
-$Cn = mysqli_connect("sql201.eshost.com.ar", "eshos_23048472", "manson87", "eshos_23048472_lifeadmin") or die("Error de conexión");
+
 if (isset($_POST['subir'])) {
 
     $titulo    = $_POST['titulo'];
